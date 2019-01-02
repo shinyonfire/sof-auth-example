@@ -1,9 +1,9 @@
 
 
 const config = {
-  apiKey: "AIzaSyAm2oVR7r2fKQLma24zXJTiabS3VfB2BC0",
-  authDomain: "shinyonfire.firebaseapp.com",
-  projectId: "shinyonfire"
+  apiKey: "<your Firebase apiKey>",
+  authDomain: "<your Firebase auth domain>",
+  projectId: "<your Firebase projectId>"
 }
 
 firebase.initializeApp(config)
