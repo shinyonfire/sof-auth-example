@@ -42,7 +42,7 @@ hidden(div(
     class = "form-group shiny-input-container",
     style = "width: 100%",
     tags$label(
-      tagList(icon("unlock-alt"), "password"),
+      tagList(icon("unlock-alt"), "verify password"),
       `for` = "register_password_verify"
     ),
     tags$input(
