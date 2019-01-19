@@ -12,10 +12,10 @@ fluidPage(
 
   # load shinyjs on
   shinyjs::useShinyjs(),
-
+  source("sof-auth/not-authorized.R", local = TRUE)$value,
   source("sof-auth/sign-in.R", local = TRUE)$value,
   source("sof-auth/register.R", local = TRUE)$value,
   source("sof-auth/verify-email.R", local = TRUE)$value,
-
+  
   source("ui/main.R", local = TRUE)$value
 )
