@@ -5,10 +5,12 @@ function(input, output, session) {
   observeEvent(input$go_to_register, {
     shinyjs::show("register_panel", anim = TRUE, animType = "fade")
     shinyjs::hide("sign_in_panel")
+    shinyjs::hide("not_authorized")
   }, ignoreInit = TRUE)
 
   observeEvent(input$go_to_sign_in, {
     shinyjs::hide("register_panel")
+    shinyjs::hide("not_authorized")
     shinyjs::show("sign_in_panel", anim = TRUE, animType = "fade")
   }, ignoreInit = TRUE)
 
@@ -20,12 +22,25 @@ function(input, output, session) {
       shinyjs::show("sign_in_panel")
       shinyjs::hide("main")
       shinyjs::hide("verify_email_view")
+      shinyjs::hide("not_authorized")
     } else {
       shinyjs::hide("sign_in_panel")
       shinyjs::hide("register_panel")
+      shinyjs::hide("not_authorized")
 
       if (current_user$emailVerified == TRUE) {
-        shinyjs::show("main")
+        
+        # read the email of the authenticated user
+        res1 <- signed_in_user_df()
+        email_logged <- res1$value[res1$name == "email"]
+        
+        # check if the email of the authenticated user is in auth_users
+        if (email_logged %in% auth_users$useremail){
+          shinyjs::show("main")
+        } else {
+          shinyjs::show("not_authorized")
+        }
+        
       } else {
         shinyjs::show("verify_email_view")
       }
