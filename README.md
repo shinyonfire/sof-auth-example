@@ -12,3 +12,10 @@ authentication.  Additional information available in [the blog post](https://www
 4. Click the "Web Setup" button (top right in above screenshot) and copy your project's "apiKey", "authDomain", and "projectId" into the object defined in line 3 of the file "www/sof-auth.js"
 5. Run the Shiny app
 
+## Adding authorization after authentication
+
+This capability has been added to the csv-authorization branch of the repo. 
+
+Using this implementation enables authorization for specific users after the e-mail firebase authentication step. The app blocks users which are authenticated but are not authorized, i.e., only users which their e-mail appears in the file `authorized_users.csv` are allowd to access the app. Unauthorized users will see an error message _You are not authorized to use this app_ (file `not-authorized.R` in /sof-auth directory).
+
+Edit/add emails to the file `authorized_users.csv` to authorize users. Note that authorized users will still need to go through the firebase registration process.
